@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//add airline endpoint
+model Airline {
+  id       Int        @id @default(autoincrement())
+  name     String
+  baseUrl  String
+  Endpoint Endpoint[]
+}
+
+//add endpoint
+model Endpoint {
+  id        Int     @id @default(autoincrement())
+  url       String
+  airline   Airline @relation(fields: [airlineId], references: [id])
+  airlineId Int
+
+  Params          Params[]
+  Mapping         Mapping[]
+  ResponseMapping ResponseMapping[]
+}
+
+model Params {
+  id              Int               @id @default(autoincrement())
+  departure_date  String
+  arrival_date    String
+  classe          String
+  price           Float
+  departure       String
+  arrival         String
+  endpoint        Endpoint          @relation(fields: [endpointId], references: [id])
+  endpointId      Int
+  ResponseMapping ResponseMapping[]
+}
+
+model Mapping {
+  id            Int      @id @default(autoincrement())
+  endpoint      Endpoint @relation(fields: [endpointId], references: [id])
+  endpointId    Int
+  departure     String
+  arrival       String
+  depature_date String
+  arrival_date  String
+  class         String
+  price         Float
+}
+
+//add response mapping
+model ResponseMapping {
+  id             Int      @id @default(autoincrement())
+  endpoint       Endpoint @relation(fields: [endpointId], references: [id])
+  endpointId     Int
+  departure      String
+  arrival        String
+  departure_date DateTime
+  arrival_date   DateTime
+  classe         String
+  price          Float
+  Params         Params?  @relation(fields: [paramsId], references: [id])
+  paramsId       Int?
+}
