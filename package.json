@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./src/index.ts",
+    "startDev": "nodemon script.ts",
     "migrate": "prisma migrate dev"
   },
   "dependencies": {

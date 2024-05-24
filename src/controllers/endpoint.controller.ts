@@ -46,11 +46,11 @@ export const getEndpointById = async (req, res) => {
 //create an endpoint
 export const createEndpoint = async (req, res) => {
   try {
-    const { airlineId, url } = req.body;
+    const { airlineId, path } = req.body;
     const endpoint = await endpointClient.create({
       data: {
         airlineId,
-        url,
+        path,
       },
     });
     res.status(200).json({ data: endpoint });

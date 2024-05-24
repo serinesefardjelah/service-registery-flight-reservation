@@ -7,7 +7,12 @@ export const getAllAirlines = async (req, res) => {
   try {
     const airlines = await airlineClient.findMany({
       include: {
-        Endpoint: true,
+        Endpoint: {
+          include: {
+            Params: true,
+            ResponseMapping: true,
+          },
+        },
       },
     });
     res.status(200).json({ data: airlines });
@@ -30,11 +35,11 @@ export const getAirlineById = async (req, res) => {
 // //create an airline
 export const createAirline = async (req, res) => {
   try {
-    const { name, baseUrl } = req.body;
+    const { name, baseURL } = req.body;
     const airline = await airlineClient.create({
       data: {
         name,
-        baseUrl,
+        baseURL,
       },
     });
     res.status(200).json({ data: airline });

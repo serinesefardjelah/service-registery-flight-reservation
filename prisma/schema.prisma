@@ -14,19 +14,18 @@ datasource db {
 model Airline {
   id       Int        @id @default(autoincrement())
   name     String
-  baseUrl  String
+  baseURL  String
   Endpoint Endpoint[]
 }
 
 //add endpoint
 model Endpoint {
   id        Int     @id @default(autoincrement())
-  url       String
+  path      String
   airline   Airline @relation(fields: [airlineId], references: [id])
   airlineId Int
 
   Params          Params[]
-  Mapping         Mapping[]
   ResponseMapping ResponseMapping[]
 }
 
@@ -43,17 +42,17 @@ model Params {
   ResponseMapping ResponseMapping[]
 }
 
-model Mapping {
-  id            Int      @id @default(autoincrement())
-  endpoint      Endpoint @relation(fields: [endpointId], references: [id])
-  endpointId    Int
-  departure     String
-  arrival       String
-  depature_date String
-  arrival_date  String
-  class         String
-  price         Float
-}
+// model Mapping {
+//   id            Int      @id @default(autoincrement())
+//   endpoint      Endpoint @relation(fields: [endpointId], references: [id])
+//   endpointId    Int
+//   departure     String
+//   arrival       String
+//   depature_date String
+//   arrival_date  String
+//   class         String
+//   price         Float
+// }
 
 //add response mapping
 model ResponseMapping {
@@ -66,6 +65,7 @@ model ResponseMapping {
   arrival_date   DateTime
   classe         String
   price          Float
+  description    String
   Params         Params?  @relation(fields: [paramsId], references: [id])
   paramsId       Int?
 }
