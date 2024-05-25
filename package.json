@@ -8,6 +8,9 @@
     "startDev": "nodemon script.ts",
     "migrate": "prisma migrate dev"
   },
+  "prisma": {
+    "schema": "./prisma/schema.prisma"
+  },
   "dependencies": {
     "@prisma/client": "^5.14.0",
     "express": "^4.19.2"
