@@ -44,17 +44,17 @@ model Params {
 
 //add response mapping
 model ResponseMapping {
-  responseMappingId             Int      @id @default(autoincrement())
-  id String  //flight id
-  endpoint       Endpoint @relation(fields: [endpointId], references: [id])
-  endpointId     Int
-  departure      String
-  arrival        String
-  departure_date String
-  arrival_date   String
-  classe         String
-  price          String
-  description    String
-  Params         Params?  @relation(fields: [paramsId], references: [id])
-  paramsId       Int?
+  responseMappingId Int      @id @default(autoincrement())
+  id                String //flight id
+  endpoint          Endpoint @relation(fields: [endpointId], references: [id])
+  endpointId        Int
+  departure         String
+  arrival           String
+  departure_date    String
+  arrival_date      String
+  classe            String
+  price             String
+  description       String
+  Params            Params?  @relation(fields: [paramsId], references: [id])
+  paramsId          Int?
 }
