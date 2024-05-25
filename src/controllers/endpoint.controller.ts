@@ -12,7 +12,6 @@ export const getAllEndpoints = async (req, res) => {
   }
 };
 
-
 export const getEndpointByAirlineId = async (req, res) => {
   try {
     const { airlineId } = req.params;
@@ -57,4 +56,22 @@ export const createEndpoint = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+};
+
+//update an endpoint
+export const updateEndpoint = async (req, res) => {
+  const { id } = req.params;
+  const { airlineId, path } = req.body;
+
+  const endpoint = await endpointClient.update({
+    where: {
+      id: Number(id),
+    },
+    data: {
+      airlineId,
+      path,
+    },
+  });
+
+  res.json(endpoint);
 };

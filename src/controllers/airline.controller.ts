@@ -66,3 +66,21 @@ export const createAirline = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+//update airline
+export const updateAirline = async (req, res) => {
+  const { id } = req.params;
+  const { name, baseURL } = req.body;
+
+  const airline = await airlineClient.update({
+    where: {
+      id: Number(id),
+    },
+    data: {
+      name,
+      baseURL,
+    },
+  });
+
+  res.json(airline);
+};
