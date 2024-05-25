@@ -22,7 +22,7 @@ CREATE TABLE "Params" (
     "departure_date" TEXT NOT NULL,
     "arrival_date" TEXT NOT NULL,
     "classe" TEXT NOT NULL,
-    "price" DOUBLE PRECISION NOT NULL,
+    "price" TEXT NOT NULL,
     "departure" TEXT NOT NULL,
     "arrival" TEXT NOT NULL,
     "endpointId" INTEGER NOT NULL,
@@ -32,18 +32,19 @@ CREATE TABLE "Params" (
 
 -- CreateTable
 CREATE TABLE "ResponseMapping" (
-    "id" SERIAL NOT NULL,
+    "responseMappingId" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "endpointId" INTEGER NOT NULL,
     "departure" TEXT NOT NULL,
     "arrival" TEXT NOT NULL,
-    "departure_date" TIMESTAMP(3) NOT NULL,
-    "arrival_date" TIMESTAMP(3) NOT NULL,
+    "departure_date" TEXT NOT NULL,
+    "arrival_date" TEXT NOT NULL,
     "classe" TEXT NOT NULL,
-    "price" DOUBLE PRECISION NOT NULL,
+    "price" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "paramsId" INTEGER,
 
-    CONSTRAINT "ResponseMapping_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "ResponseMapping_pkey" PRIMARY KEY ("responseMappingId")
 );
 
 -- AddForeignKey
