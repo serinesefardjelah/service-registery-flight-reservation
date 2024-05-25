@@ -35,7 +35,6 @@ model Params {
   departure_date  String
   arrival_date    String
   classe          String
-  price           String
   departure       String
   arrival         String
   endpoint        Endpoint          @relation(fields: [endpointId], references: [id])

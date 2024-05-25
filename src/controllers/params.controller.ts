@@ -2,11 +2,17 @@ import { PrismaClient } from "@prisma/client";
 
 const paramsClient = new PrismaClient().params;
 
-
 //create params
 export const createParams = async (req, res) => {
   try {
-    const { endpointId, departure, arrival, departure_date, arrival_date, classe, price} = req.body;
+    const {
+      endpointId,
+      departure,
+      arrival,
+      departure_date,
+      arrival_date,
+      classe,
+    } = req.body;
     const params = await paramsClient.create({
       data: {
         endpointId,
@@ -15,7 +21,6 @@ export const createParams = async (req, res) => {
         departure_date,
         arrival_date,
         classe,
-        price 
       },
     });
     res.status(200).json({ data: params });
