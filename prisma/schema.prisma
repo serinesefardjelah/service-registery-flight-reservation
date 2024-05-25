@@ -35,25 +35,13 @@ model Params {
   departure_date  String
   arrival_date    String
   classe          String
-  price           Float
+  price           String
   departure       String
   arrival         String
   endpoint        Endpoint          @relation(fields: [endpointId], references: [id])
   endpointId      Int
   ResponseMapping ResponseMapping[]
 }
-
-// model Mapping {
-//   id            Int      @id @default(autoincrement())
-//   endpoint      Endpoint @relation(fields: [endpointId], references: [id])
-//   endpointId    Int
-//   departure     String
-//   arrival       String
-//   depature_date String
-//   arrival_date  String
-//   class         String
-//   price         Float
-// }
 
 //add response mapping
 model ResponseMapping {
@@ -65,7 +53,7 @@ model ResponseMapping {
   departure_date DateTime
   arrival_date   DateTime
   classe         String
-  price          Float
+  price          String
   description    String
   Params         Params?  @relation(fields: [paramsId], references: [id])
   paramsId       Int?
