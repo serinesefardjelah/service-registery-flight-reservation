@@ -75,3 +75,15 @@ export const updateEndpoint = async (req, res) => {
 
   res.json(endpoint);
 };
+
+//delete endpoint
+export const deleteEndpoint = async (req, res) => {
+  const { id } = req.params;
+  const endpoint = await endpointClient.delete({
+    where: {
+      id: Number(id),
+    },
+  });
+
+  res.json(endpoint);
+};

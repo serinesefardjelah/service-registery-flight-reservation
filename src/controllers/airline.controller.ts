@@ -84,3 +84,16 @@ export const updateAirline = async (req, res) => {
 
   res.json(airline);
 };
+
+//delete airline
+export const deleteAirline = async (req, res) => {
+
+  const { id } = req.params;
+  const airline = await airlineClient.delete({
+    where: {
+      id: Number(id),
+    },
+  });
+
+  res.json(airline);
+};
