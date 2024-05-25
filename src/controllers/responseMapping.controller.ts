@@ -27,6 +27,7 @@ export const getResponseByEndpointId = async (req, res) => {
 export const createResponseMapping = async (req, res) => {
   try {
     const {
+      id,
       endpointId,
       departure,
       arrival,
@@ -34,7 +35,6 @@ export const createResponseMapping = async (req, res) => {
       arrival_date,
       classe,
       price,
-      airlineId,
       description,
     } = req.body;
     const params = await responseClient.create({
@@ -47,6 +47,7 @@ export const createResponseMapping = async (req, res) => {
         classe,
         price,
         description,
+        id,
       },
     });
     res.status(200).json({ data: params });
