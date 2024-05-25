@@ -51,8 +51,8 @@ model ResponseMapping {
   endpointId     Int
   departure      String
   arrival        String
-  departure_date DateTime
-  arrival_date   DateTime
+  departure_date String
+  arrival_date   String
   classe         String
   price          String
   description    String
