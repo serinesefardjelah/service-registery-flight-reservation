@@ -9,8 +9,27 @@ export const getAllAirlines = async (req, res) => {
       include: {
         Endpoint: {
           include: {
-            Params: true,
-            ResponseMapping: true,
+            Params: {
+              select: {
+                departure: true,
+                arrival: true,
+                departure_date: true,
+                arrival_date: true,
+                classe: true,
+              },
+            },
+            ResponseMapping: {
+              select: {
+                id: true,
+                departure: true,
+                arrival: true,
+                departure_date: true,
+                arrival_date: true,
+                classe: true,
+                price: true,
+                description: true,
+              },
+            },
           },
         },
       },
