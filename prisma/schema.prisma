@@ -45,7 +45,8 @@ model Params {
 
 //add response mapping
 model ResponseMapping {
-  id             Int      @id @default(autoincrement())
+  responseMappingId             Int      @id @default(autoincrement())
+  id String  //flight id
   endpoint       Endpoint @relation(fields: [endpointId], references: [id])
   endpointId     Int
   departure      String
