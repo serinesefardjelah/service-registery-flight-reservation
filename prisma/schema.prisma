@@ -47,7 +47,7 @@ model Params {
 model ResponseMapping {
   responseMappingId Int      @id @default(autoincrement())
   id                String //flight id
-  endpoint          Endpoint @relation(fields: [endpointId], references: [id])
+  endpoint          Endpoint @relation(fields: [endpointId], references: [id], onDelete: Cascade)
   endpointId        Int
   departure         String
   arrival           String
@@ -56,6 +56,6 @@ model ResponseMapping {
   classe            String
   price             String
   description       String
-  Params            Params?  @relation(fields: [paramsId], references: [id])
+  Params            Params?  @relation(fields: [paramsId], references: [id], onDelete: Cascade)
   paramsId          Int?
 }
